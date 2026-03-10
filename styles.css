@@ -650,13 +650,21 @@ body {
 /* Cuisine Tabs */
 .cuisine-tabs {
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
     gap: 12px;
     margin-bottom: 40px;
+    overflow-x: auto;
+    padding: 0 24px 15px 24px; /* Space for scrolling + align with container edge */
+    margin: 0 -24px 40px -24px; /* Provide full-width scroll area on mobile */
+    -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+    scrollbar-width: none; /* Firefox */
 }
-
+.cuisine-tabs::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
 .cuisine-tab {
+    flex-shrink: 0; /* Important: prevents tabs from squishing */
     padding: 10px 24px;
     border-radius: 100px;
     background: var(--bg-card);
